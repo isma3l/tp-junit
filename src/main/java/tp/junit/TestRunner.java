@@ -14,15 +14,14 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class TestRunner extends Runner{
-    private TestResult result;
     private File resultTxt;
 
     public TestRunner() {
+        super( new TestResult());
         resultTxt = new File("resultTest.txt");
     }
     @Override
     public void run(TestSuite suite) throws IOException {
-        this.result = new TestResult();
         suite.run(result);
         this.printResults();
     }

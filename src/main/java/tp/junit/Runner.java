@@ -3,12 +3,12 @@ package tp.junit;
 import java.io.IOException;
 
 public abstract class Runner {
-    private TestResult result;
+    protected TestResult result;
     private boolean store;
 
-    protected Runner() {
-        this.result = new TestResult();
-        this.store = false;
+    protected Runner(TestResult result) {
+      this.result = result;
+      this.store = false;
     }
 
     public void setStore(boolean store) {

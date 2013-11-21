@@ -6,6 +6,7 @@ import aplicacion.TestError;
 import aplicacion.TestRestaCalculadora;
 import tp.junit.FileStore;
 import tp.junit.TestRunner;
+import tp.junit.TestRunnerStore;
 import tp.junit.TestSuite;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class CasoRecordarTestConFallidos {
     // la segunda corrida bajo el modo: correr failures/errors/ + nuevos
 
     public static void main(String[] args) throws IOException {
-        TestRunner handler = new TestRunner();
+        TestRunnerStore handler = new TestRunnerStore(new TestRunner());
         TestSuite suite = new TestSuite("suite");
         TestCalculadora testCalculadora = new TestCalculadora();
         TestError testError = new TestError();
