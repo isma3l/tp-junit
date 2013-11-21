@@ -4,15 +4,15 @@ import java.io.IOException;
 
 public abstract class Runner {
     protected TestResult result;
-    private boolean store;
+    private boolean remember;
 
-    protected Runner(TestResult result) {
+    protected Runner(TestResult result,boolean remember) {
       this.result = result;
-      this.store = false;
+      this.remember = remember;
     }
 
-    public void setStore(boolean store) {
-        this.store = store;
+    public boolean isRemember() {
+        return remember;
     }
 
     public TestResult getResult() {

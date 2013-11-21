@@ -17,7 +17,7 @@ public class TestRunner extends Runner{
     private File resultTxt;
 
     public TestRunner() {
-        super(new TestResult());
+        super(new TestResult(),false);
         resultTxt = new File("resultTest.txt");
     }
     @Override

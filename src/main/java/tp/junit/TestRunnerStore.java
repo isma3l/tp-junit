@@ -7,13 +7,11 @@ import java.util.ArrayList;
 public class TestRunnerStore extends RunnerDecorator{
     private Runner runner;
     private Store store;
-    private boolean remember;
 
     public TestRunnerStore(Runner runner,boolean remember) {
-        super(runner.getResult());
+        super(runner.getResult(),remember);
         this.runner = runner;
         this.store = null;
-        this.remember=remember;
     }
 
     public void setStore(Store store) {
@@ -26,7 +24,7 @@ public class TestRunnerStore extends RunnerDecorator{
     }
     @Override
     public void run(TestSuite suite) throws IOException {
-        if (remember) suite.filterOkTest(store.getBlackList(),getResult());
+        if (isRemember()) suite.filterOkTest(store.getBlackList(),getResult());
         runner.run(suite);
         saveToStore();
     }

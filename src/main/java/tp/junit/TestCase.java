@@ -48,8 +48,6 @@ public abstract class TestCase extends Test {
                 tiempoFinal = System.nanoTime();
                 result.addError(testName, calcularTiempo(tiempoInicial, tiempoFinal));
             }
-        } else {
-                result.addSkipped(testName, 0);
         }
 
     }
