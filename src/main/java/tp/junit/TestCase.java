@@ -35,14 +35,12 @@ public abstract class TestCase extends Test {
     @Override
     public void run(TestResult result) {
         long tiempoInicial = 0, tiempoFinal = 0;
-        if (run == true) {
+        if (validate(result)) {
             try {
-                if(validate(result)) {
                     tiempoInicial = System.nanoTime();
                     runTest();
                     tiempoFinal = System.nanoTime();
                     result.addPassed(testName, calcularTiempo(tiempoInicial, tiempoFinal));
-                }
             } catch (AssertException e) {
                 tiempoFinal = System.nanoTime();
                 result.addFail(testName, calcularTiempo(tiempoInicial, tiempoFinal));
@@ -51,7 +49,9 @@ public abstract class TestCase extends Test {
                 result.addError(testName, calcularTiempo(tiempoInicial, tiempoFinal));
             }
         } else {
+            if(store == null) {
                 result.addSkipped(testName, 0);
+            }
         }
 
     }
