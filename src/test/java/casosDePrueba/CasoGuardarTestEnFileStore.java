@@ -13,8 +13,11 @@ import java.io.IOException;
 
 public class CasoGuardarTestEnFileStore {
 
-    // se guarda en el Store.txt los test que no seran ejecutados al realizarse
-    // la segunda corrida bajo el modo: correr failures/errors/ + nuevos
+    /*
+      en este caso se ejecutan 3 tests:
+      testCalculadora, testError, testRestaCalculadora,
+      y se elige que se almacenen los datos de la corrida en el FileStore
+     */
 
     public static void main(String[] args) throws IOException {
         TestRunnerStore handler = new TestRunnerStore(new TestRunner(),false);
@@ -26,6 +29,7 @@ public class CasoGuardarTestEnFileStore {
         suite.addTest(testError);
         suite.addTest(testRestaCalculadora);
         suite.addTest(testCalculadora);
+
         handler.setStore(new FileStore());
         handler.run(suite);
     }

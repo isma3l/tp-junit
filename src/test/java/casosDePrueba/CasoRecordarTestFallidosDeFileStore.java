@@ -11,17 +11,17 @@ import tp.junit.TestSuite;
 
 import java.io.IOException;
 
-public class CasoRecordarTestFallidos {
+public class CasoRecordarTestFallidosDeFileStore {
 
  /*
-     En el caso CasoGuardarTestEnFileStore se ejecutaron 3 testcase:
-     testCalculadora, testError, testRestaCalculadora,
+     En este caso se usa la corrida almacenada por el caso CasoGuardarTestEnFileStore,
+     en dicha corrida se ejecutaron 3 testcase:   testCalculadora, testError, testRestaCalculadora,
      de los cuales el testCalculadora fue el unico exitoso,
-     el resultado de la corrida se guardo en el store.
 
      Para esta prueba se realiza el mismo test pero en el modo que permita correr solo
-     los test failures/errors o nuevos, por lo tanto no se ejecutara el testCalculadora.
-     El test nuevo es TestRestaCalculadoraCorrecta
+     los test failures/errors o nuevos, por lo tanto NO se ejecutara el testCalculadora,
+     pero si dos los restantes mas el nuevo test TestRestaCalculadoraCorrecta,
+     corriendo solo 3 test de los 4 test que se agregan.
  */
 
     public static void main(String[] args) throws IOException {
