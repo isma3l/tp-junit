@@ -10,7 +10,7 @@ import tp.junit.TestSuite;
 
 import java.io.IOException;
 
-public class CasoCorrerEnModoRecordarTest {
+public class CasoRecordarTestFallidos {
 
  /*
      En el caso CasoGuardarTestEnFileStore se ejecutaron 3 testcase:
