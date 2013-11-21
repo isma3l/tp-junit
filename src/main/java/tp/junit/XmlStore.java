@@ -62,7 +62,7 @@ public class XmlStore implements Store{
         root = doc.createElement(XmlStore.Blacklist);
         doc.appendChild(root);
         for (TestState state : blacklist)
-            agregarTest(root, state.getTestCaseName());
+            agregarTest(root, state.getState());
         guardar();
     }
 
