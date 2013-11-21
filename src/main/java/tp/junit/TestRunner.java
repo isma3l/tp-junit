@@ -13,20 +13,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class TestRunner {
-    private Store store;
+public class TestRunner extends Runner{
     private TestResult result;
     private File resultTxt;
 
     public TestRunner() {
         resultTxt = new File("resultTest.txt");
-        store = null;
     }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
-
+    @Override
     public void run(TestSuite suite) throws IOException {
         this.result = new TestResult();
         suite.run(result);
@@ -151,12 +145,5 @@ public class TestRunner {
         pw.close();
         bw.close();
         xml.guardar("Resultado");
-        saveToStore();
-    }
-
-    private void saveToStore() {
-        if(store!= null) {
-            store.addTestToBlackList(result.getPasses());
-        }
     }
 }
