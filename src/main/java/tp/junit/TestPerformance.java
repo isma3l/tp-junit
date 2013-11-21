@@ -2,19 +2,20 @@ package tp.junit;
 
 public class TestPerformance extends TestDecorator{
     TestCase testCase;
-    long timelimit;
+    double timelimit;
     long starttime;
     long endtime;
-    public TestPerformance(TestCase testCase, long timelimit) {
+
+    public TestPerformance(TestCase testCase, double timelimit) {
         this.testCase = testCase;
         this.timelimit = timelimit;
-        this.starttime=0;
-        this.endtime=0;
+        this.starttime = 0;
+        this.endtime = 0;
     }
 
     public void verifiedTimeLimit() {
-        long elapsedTime=(endtime-starttime)/ 1000000;
-        if (elapsedTime>timelimit) throw new AssertException();
+        double elapsedTime = (endtime-starttime)/1000000;
+        if (elapsedTime > timelimit) throw new AssertException();
     }
 
     @Override
