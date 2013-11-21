@@ -62,19 +62,19 @@ public class XmlStore implements Store{
         root = doc.createElement(XmlStore.Blacklist);
         doc.appendChild(root);
         for (TestState state : blacklist)
-            agregarTest(root, state.getState());
+            agregarTest(root, state.getTestCaseName());
         guardar();
     }
 
     @Override
-    public ArrayList<TestState> getBlackList() {
-        ArrayList<TestState> blacklist= new ArrayList<TestState>();
+    public ArrayList<String> getBlackList() {
+        ArrayList<String> blacklist= new ArrayList<String>();
         try {
             doc=docBuilder.parse(new File(XmlStore.filename));
-            NodeList nodeList = doc.getElementsByTagName(XmlStore.Blacklist);
+            NodeList nodeList = doc.getElementsByTagName(XmlStore.Testcase);
             for(int i=0; i<nodeList.getLength(); i++) {
                 String testname=nodeList.item(i).getAttributes().getNamedItem(XmlStore.Attname).getNodeValue();
-                blacklist.add(new TestState(testname, TestState.State.PASSED, 0));
+                blacklist.add(testname);
             }
         } catch (SAXException e) {
             e.printStackTrace();

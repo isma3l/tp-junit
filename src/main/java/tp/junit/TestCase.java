@@ -35,7 +35,7 @@ public abstract class TestCase extends Test {
     @Override
     public void run(TestResult result) {
         long tiempoInicial = 0, tiempoFinal = 0;
-        if (validate(result)) {
+        if (run == true) {
             try {
                 tiempoInicial = System.nanoTime();
                 runTest();
@@ -49,9 +49,7 @@ public abstract class TestCase extends Test {
                 result.addError(testName, calcularTiempo(tiempoInicial, tiempoFinal));
             }
         } else {
-            if(store == null) {
                 result.addSkipped(testName, 0);
-            }
         }
 
     }
@@ -76,20 +74,6 @@ public abstract class TestCase extends Test {
         }
     }
 
-    public boolean validate(TestResult result) {
-        if(store != null) {
-            String nameComplete= result.getSuiteName() + "." + testName;
-            List<TestState> listPrevious = store.getBlackList();
-
-            for(TestState state: listPrevious) {
-                if(state.getState().equals(nameComplete)) {
-                    return false;
-                }
-            }
-        }
-        return run;
-    }
-
     public boolean isRunner() {
         return run;
     }
@@ -112,5 +96,8 @@ public abstract class TestCase extends Test {
         }
     }
 
-
+    @Override
+    public void filterOkTest(ArrayList<String> blackList,TestResult result) {
+        run=(!(blackList.contains(testName)));
+    }
 }

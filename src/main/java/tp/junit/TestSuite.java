@@ -29,7 +29,6 @@ public class TestSuite extends Test {
 
             if (!test.classType().equals("TestSuite")) {
                 test.setAttribute(setUp);
-                test.setStore(store);
             }
             test.run(result);
             if (setUp != null) {
@@ -75,4 +74,10 @@ public class TestSuite extends Test {
         }
     }
 
+    @Override
+    public void filterOkTest(ArrayList<String> blackList,TestResult result) {
+        for (Test test : tests) {
+            test.filterOkTest(blackList,result);
+        }
+    }
 }

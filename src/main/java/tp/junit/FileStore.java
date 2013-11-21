@@ -16,7 +16,7 @@ public class FileStore implements Store{
             printWriter = new PrintWriter(fileWriter);
 
             for (TestState testState: blacklist) {
-                printWriter.println(testState.getState());
+                printWriter.println(testState.getTestCaseName());
             }
 
         } catch (Exception e) {
@@ -32,11 +32,11 @@ public class FileStore implements Store{
     }
 
     @Override
-    public ArrayList<TestState> getBlackList() {
+    public ArrayList<String> getBlackList() {
         File file;
         FileReader fileReader = null;
         BufferedReader bufferedReader;
-        ArrayList<TestState> list = new ArrayList<TestState>();
+        ArrayList<String> list = new ArrayList<String>();
 
         try {
             file = new File (name);
@@ -45,7 +45,7 @@ public class FileStore implements Store{
 
             String line;
             while((line = bufferedReader.readLine()) != null)
-                list.add(new TestState(line, TestState.State.PASSED, 0));
+                list.add(line);
         }
         catch(Exception exception){
             exception.printStackTrace();

@@ -3,9 +3,11 @@
  */
 package tp.junit;
 
+import java.util.ArrayList;
+
 public abstract class Test {
     SetUp setUp = null;
-    Store store = null;
+ //   Store store = null;
 
     public void setAttribute(SetUp setup) {
         setUp = setup;
@@ -15,9 +17,9 @@ public abstract class Test {
         return setUp;
     }
 
-    public void setStore(Store store) {
+   /* public void setStore(Store store) {
         this.store = store;
-    }
+    }*/
 
     public abstract void run(TestResult result);
 
@@ -29,4 +31,5 @@ public abstract class Test {
 
     public abstract void haveTag(String tag);
 
+    public abstract void filterOkTest(ArrayList<String> blackList,TestResult result);
 }

@@ -17,7 +17,7 @@ public class CasoGuardarTestEnFileStore {
     // la segunda corrida bajo el modo: correr failures/errors/ + nuevos
 
     public static void main(String[] args) throws IOException {
-        TestRunnerStore handler = new TestRunnerStore(new TestRunner());
+        TestRunnerStore handler = new TestRunnerStore(new TestRunner(),false);
         TestSuite suite = new TestSuite("suite");
         TestCalculadora testCalculadora = new TestCalculadora();
         TestError testError = new TestError();

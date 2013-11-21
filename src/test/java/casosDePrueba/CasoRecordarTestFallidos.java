@@ -25,11 +25,11 @@ public class CasoRecordarTestFallidos {
  */
 
     public static void main(String[] args) throws IOException {
-        TestRunnerStore handler = new TestRunnerStore(new TestRunner());
+        TestRunnerStore handler = new TestRunnerStore(new TestRunner(),true);
 
         TestSuite suite = new TestSuite("suite");
         // se elige que se recuerde la corrida que se guardo con FileStore
-        suite.setStore(new FileStore());
+        handler.setStore(new FileStore());
 
         TestCalculadora testCalculadora = new TestCalculadora();
         TestError testError = new TestError();

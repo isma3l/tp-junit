@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class CasoRecordarTetConFallidosStoreXml {
     public static void main(String[] args) throws IOException {
-        TestRunnerStore handler = new TestRunnerStore(new TestRunner());
+        TestRunnerStore handler = new TestRunnerStore(new TestRunner(),true);
         TestSuite suite = new TestSuite("suite");
         TestCalculadora testCalculadora = new TestCalculadora();
         TestError testError = new TestError();
