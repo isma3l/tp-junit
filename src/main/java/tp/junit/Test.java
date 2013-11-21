@@ -4,8 +4,8 @@
 package tp.junit;
 
 public abstract class Test {
-
     SetUp setUp = null;
+    Store store = null;
 
     public void setAttribute(SetUp setup) {
         setUp = setup;
@@ -13,6 +13,10 @@ public abstract class Test {
 
     public SetUp getSetUp() {
         return setUp;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public abstract void run(TestResult result);
@@ -24,4 +28,5 @@ public abstract class Test {
     public abstract void regularExp(String regex);
 
     public abstract void haveTag(String tag);
+
 }

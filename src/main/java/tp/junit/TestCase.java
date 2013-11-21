@@ -7,6 +7,9 @@
  */
 package tp.junit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class TestCase extends Test {
 
     private String testName;
@@ -34,10 +37,12 @@ public abstract class TestCase extends Test {
         long tiempoInicial = 0, tiempoFinal = 0;
         if (run == true) {
             try {
-                tiempoInicial = System.nanoTime();
-                runTest();
-                tiempoFinal = System.nanoTime();
-                result.addPassed(testName, calcularTiempo(tiempoInicial, tiempoFinal));
+                if(validate(result)) {
+                    tiempoInicial = System.nanoTime();
+                    runTest();
+                    tiempoFinal = System.nanoTime();
+                    result.addPassed(testName, calcularTiempo(tiempoInicial, tiempoFinal));
+                }
             } catch (AssertException e) {
                 tiempoFinal = System.nanoTime();
                 result.addFail(testName, calcularTiempo(tiempoInicial, tiempoFinal));
@@ -71,6 +76,20 @@ public abstract class TestCase extends Test {
         }
     }
 
+    public boolean validate(TestResult result) {
+        if(store != null) {
+            String nameComplete= result.getSuiteName() + "." + testName;
+            List<TestState> listPrevious = store.getBlackList();
+
+            for(TestState state: listPrevious) {
+                if(state.getState().equals(nameComplete)) {
+                    return false;
+                }
+            }
+        }
+        return run;
+    }
+
     public boolean isRunner() {
         return run;
     }
@@ -92,4 +111,6 @@ public abstract class TestCase extends Test {
             }
         }
     }
+
+
 }

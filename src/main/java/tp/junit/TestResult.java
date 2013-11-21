@@ -71,4 +71,8 @@ public class TestResult {
     public int getTestCount() {
         return this.tCount;
     }
+
+    public String getSuiteName() {
+        return suiteName;
+    }
 }

@@ -11,9 +11,9 @@ import tp.junit.TestSuite;
 
 import java.io.IOException;
 
-public class CasoRecordarTestConFallidos {
+public class CasoGuardarTestEnFileStore {
 
-    // se guarda en el Store.txt los test que no seran ejecutados al realzarse
+    // se guarda en el Store.txt los test que no seran ejecutados al realizarse
     // la segunda corrida bajo el modo: correr failures/errors/ + nuevos
 
     public static void main(String[] args) throws IOException {
