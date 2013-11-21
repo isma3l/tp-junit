@@ -1,5 +1,4 @@
 package aplicacion;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import tp.junit.Runner;
 import tp.junit.TestRunner;
 
@@ -17,10 +16,10 @@ public class ArgumentValidator {
     private  boolean badOption(){
         return (!args.contains(storeopt));
     }
-    public void start() throws InvalidArgumentException{
+    public void start() throws IllegalArgumentException{
         if (args.size()>0){
             if (badOption() || badArgAmount()){
-                throw new InvalidArgumentException(new String[]{"Bad options"});
+                throw new IllegalArgumentException("Bad options");
             }
             runner.setStore(true);
         }
