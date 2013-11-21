@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileStore implements Store{
-    private final String name = "FileStore.txt";
+    private final String name = "Store.txt";
 
     @Override
     public void addTestToBlackList(ArrayList<TestState> blacklist) {
