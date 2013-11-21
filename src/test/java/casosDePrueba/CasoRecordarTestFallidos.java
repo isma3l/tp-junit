@@ -6,6 +6,7 @@ import aplicacion.TestRestaCalculadora;
 import aplicacion.TestRestaCalculadoraCorrecta;
 import tp.junit.FileStore;
 import tp.junit.TestRunner;
+import tp.junit.TestRunnerStore;
 import tp.junit.TestSuite;
 
 import java.io.IOException;
@@ -24,9 +25,12 @@ public class CasoRecordarTestFallidos {
  */
 
     public static void main(String[] args) throws IOException {
-        TestRunner handler = new TestRunner();
+        TestRunnerStore handler = new TestRunnerStore(new TestRunner());
 
         TestSuite suite = new TestSuite("suite");
+        // se elige que se recuerde la corrida que se guardo con FileStore
+        suite.setStore(new FileStore());
+
         TestCalculadora testCalculadora = new TestCalculadora();
         TestError testError = new TestError();
         TestRestaCalculadora testRestaCalculadora = new TestRestaCalculadora();
@@ -37,6 +41,6 @@ public class CasoRecordarTestFallidos {
         suite.addTest(testCalculadora);
         suite.addTest(testRestaCalculadoraCorrecta);
 
-        handler.runWithStore(suite, new FileStore());
+        handler.run(suite);
     }
 }

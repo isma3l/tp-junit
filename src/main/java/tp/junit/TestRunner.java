@@ -26,12 +26,6 @@ public class TestRunner extends Runner{
         this.printResults();
     }
 
-    public void runWithStore(TestSuite suite, Store store) throws IOException {
-        suite.setStore(store);
-        suite.run(result);
-        this.printResults();
-    }
-
     public void runWithRegex(TestSuite suite, String regex) throws IOException {
         suite.regularExp(regex);
         suite.run(result);
