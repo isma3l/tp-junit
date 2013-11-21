@@ -37,10 +37,10 @@ public abstract class TestCase extends Test {
         long tiempoInicial = 0, tiempoFinal = 0;
         if (validate(result)) {
             try {
-                    tiempoInicial = System.nanoTime();
-                    runTest();
-                    tiempoFinal = System.nanoTime();
-                    result.addPassed(testName, calcularTiempo(tiempoInicial, tiempoFinal));
+                tiempoInicial = System.nanoTime();
+                runTest();
+                tiempoFinal = System.nanoTime();
+                result.addPassed(testName, calcularTiempo(tiempoInicial, tiempoFinal));
             } catch (AssertException e) {
                 tiempoFinal = System.nanoTime();
                 result.addFail(testName, calcularTiempo(tiempoInicial, tiempoFinal));
